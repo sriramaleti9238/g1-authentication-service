@@ -31,7 +31,7 @@ import jakarta.transaction.Transactional;
 @RestController
 //@EnableDiscoveryClient
 @CrossOrigin(origins="*") 
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/authentication-service")
 public class AuthenticationController {
 	
 	@Autowired
@@ -91,10 +91,20 @@ public class AuthenticationController {
 		
 	}
 	
-	@PutMapping("/patient/{email}/{password}")
+//	@PutMapping("/patient/{email}/{password}")
+//	@Transactional
+//	@Timed(value="updatePassword.time",description="patient password update")
+//	public void updateStatusById(@PathVariable @Valid String email,@PathVariable @Valid String password) {
+//		System.out.println(email+" "+password);
+//		loginService.updatepassword(email,password);
+//		registry.counter("updatePassword.counter").increment();
+//	}
+	
+	@PutMapping("/patient")
 	@Transactional
 	@Timed(value="updatePassword.time",description="patient password update")
-	public void updateStatusById(@PathVariable @Valid String email,@PathVariable @Valid String password) {
+	public void updateStatusById(@RequestParam("email") String email,
+			@RequestParam("password") String password) {
 		System.out.println(email+" "+password);
 		loginService.updatepassword(email,password);
 		registry.counter("updatePassword.counter").increment();

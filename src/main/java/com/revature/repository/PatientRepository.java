@@ -15,6 +15,6 @@ public interface PatientRepository extends JpaRepository<Patient,Integer>{
 	public Patient findByEmailAndPassword(String email, String password);
 	
 	@Modifying
-	@Query( value="update Patient set password=:password WHERE email=:email" ,nativeQuery = true)
+	@Query( value="update patient set password=:password WHERE email=:email" ,nativeQuery = true)
 	void updatePassword(@Param(value = "password") String password, @Param(value = "email") String email);
 }

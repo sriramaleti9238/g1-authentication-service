@@ -21,7 +21,7 @@ public class Logging {
 
 	org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Logging.class);
 
-	@Pointcut(value = "execution(* com.revature.pms.*.*.*(..))")
+	@Pointcut(value="execution(* com.revature.*.*.*(..))")
 	public void myPointcut() {
 
 	}
